@@ -1,0 +1,32 @@
+# default
+spring:
+  profile:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  batch:
+    job:
+      names: ${job.name:NONE}
+      enabled: false
+    jdbc:
+      initialize-scheme: always
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/springbatch
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: springbatch
+    password: springbatch
+  jpa:
+      show-sql: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    database: h2
